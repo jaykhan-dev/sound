@@ -11,7 +11,12 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@vueuse/motion": "^2.0.0-beta.12",
+    "axios": "^0.27.2",
+    "gsap": "^3.10.4",
     "pinia": "^2.0.14",
+    "three": "^0.141.0",
+    "troisjs": "^0.3.4",
     "vue": "^3.2.36",
     "vue-router": "^4.0.15"
   },
