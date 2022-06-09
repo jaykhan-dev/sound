@@ -1,6 +1,6 @@
 <template>
-  <Renderer ref="renderer" resize orbit-ctrl pointer>
-    <Camera :position="{ z: 200 }" />
+  <Renderer ref="renderer" resize pointer orbit-ctrl>
+    <Camera :position="{ z: 20 }" />
     <Scene>
       <AmbientLight color="#808080" />
       <PointLight color="#ff6000" />
@@ -8,7 +8,7 @@
       <PointLight color="#ff6000" :intensity="0.5" :position="{ x: 100 }" />
       <PointLight color="#0000ff" :intensity="0.5" :position="{ x: -100 }" />
 
-      <InstancedMesh ref="imesh" :count="NUM_INSTANCES">
+      <!-- <InstancedMesh ref="imesh" :count="NUM_INSTANCES">
         <BoxGeometry :width="2" :height="2" :depth="10" />
         <StandardMaterial
           :props="{
@@ -18,47 +18,56 @@
             roughness: 0.5,
           }"
         />
-      </InstancedMesh>
+      </InstancedMesh> -->
+
+      <GltfModel
+        src="https://khanquest-heroku.s3.ca-central-1.amazonaws.com/city_out_of_iphone.gltf"
+        @load="onReady"
+        @progress="onProgress"
+        @error="onError"
+        :position="{ x: 0, y: 0, z: 0 }"
+      />
     </Scene>
     <EffectComposer>
       <RenderPass />
-      <UnrealBloomPass :strength="1" />
+      <UnrealBloomPass :strength="0.3" />
+      <FXAAPass />
     </EffectComposer>
   </Renderer>
 </template>
 
 <script>
 import { Object3D, MathUtils, Vector3 } from "three";
+//import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 const { randFloat: rnd, randFloatSpread: rndFS } = MathUtils;
 import {
   AmbientLight,
-  BoxGeometry,
+  //BoxGeometry,
   Camera,
   EffectComposer,
-  InstancedMesh,
+  //InstancedMesh,
   PointLight,
   Renderer,
   RenderPass,
-  StandardMaterial,
+  //StandardMaterial,
   Scene,
   UnrealBloomPass,
+  GltfModel,
 } from "troisjs";
 export default {
   components: {
     AmbientLight,
-    BoxGeometry,
+    // BoxGeometry,
     Camera,
     EffectComposer,
-
-    InstancedMesh,
-
+    // InstancedMesh,
     PointLight,
     Renderer,
     RenderPass,
-    StandardMaterial,
+    // StandardMaterial,
     Scene,
-
     UnrealBloomPass,
+    GltfModel,
   },
   setup() {
     const NUM_INSTANCES = 100;
