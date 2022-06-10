@@ -20,7 +20,7 @@
     </button>
 
     <a
-      href="https://music-endeavr.netlify.app"
+      href="https://soundendeavr.netlify.app"
       target="_blank"
       rel="noopener noreferrer"
       ><img
