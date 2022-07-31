@@ -1,14 +1,16 @@
 <template>
   <main class="">
     <HeroSection />
+    <ThreeImages />
   </main>
 </template>
 
 <script>
 import HeroSection from '~/components/HeroSection.vue'
+import ThreeImages from '~/components/ThreeImages.vue'
 export default {
   name: 'IndexPage',
-  components: { HeroSection },
+  components: { HeroSection, ThreeImages },
 }
 </script>
 
